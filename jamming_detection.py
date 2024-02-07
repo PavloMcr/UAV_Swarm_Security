@@ -1,8 +1,8 @@
 import serial
 
 # Define the allowed threshold values for RSSI and SNR
-RSSI_THRESHOLD = -60  # Example threshold for RSSI
-SNR_THRESHOLD = 20    # Example threshold for SNR
+RSSI_THRESHOLD = -100  # Example threshold for RSSI
+SNR_THRESHOLD = 0    # Example threshold for SNR
 
 # Variables for sequence checking
 expected_sequence = 0

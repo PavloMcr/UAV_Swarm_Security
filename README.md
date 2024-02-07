@@ -4,7 +4,9 @@ This project includes files related to the development of the security mechanism
 
 ## Getting started
 
-Follow the folders to navigate
+Follow the files to navigate. 
+The skelletons for Jamming Detection is availiable in the jamming_detection.py file. 
+GPS spoofing detection skelleton is availiable in the gps_spoofing_plausibility.py 
 
 ## Current Tasks
 

@@ -8,18 +8,25 @@ import math
 
 # Execute
 def main():
-    
-    pixhawk = mavutil.mavlink_connection('/dev/serial', baud=115200)  # Needs to be adjusted
-    # Create the GPS_Coordinates class instance
-    gps_handler = GPS_Coordinates()
-    # Fetch own drone's GPS coordinates
-    own_coords = GPS_Coordinates.get_own_gps_coordinates(pixhawk)
-    # Add own drone's GPS coordinates to the list
-    gps_handler.add_own_coordinates(own_coords)
-    
-    # TODO: Implement the fetching of other drone coordinates
-    other_coord = GPS_Coordinates.get_other_drone_gps_coordinates("Communication Hub") # Need to implement
-    gps_handler.add_other_drone_coordinates(other_coord) 
+  
+    try:
+        pixhawk = mavutil.mavlink_connection('/dev/serial', baud=115200)  # serial port & baud rate
+        # Wait for the first heartbeat to confirm the connection
+        heartbeat = pixhawk.wait_heartbeat(timeout=5)  # Timeout in seconds
+        if heartbeat:
+            gps_handler = GPS_Coordinates()  # Instantiate your GPS handler class
+            own_coords = GPS_Coordinates.get_own_gps_coordinates(pixhawk, timeout=5)
+            # TODO: Implement the fetching of other drone coordinates
+            # other_coord = GPS_Coordinates.get_other_drone_gps_coordinates("Communication Hub")
+            # gps_handler.add_other_drone_coordinates(other_coord) 
+            if own_coords:
+                gps_handler.add_own_coordinates(own_coords)               
+            else:
+                print("Failed to retrieve GPS coordinates.")                
+        else:
+            print("Failed to receive heartbeat from Pixhawk.")            
+    except Exception as e:
+        print(f"Error during Pixhawk communication: {e}")  
     
   # Now calculate the distance between your own drone and the other drone
     if gps_handler.own_positions and drone_id in gps_handler.other_drones_positions:

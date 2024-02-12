@@ -9,12 +9,12 @@ The skelletons for Jamming Detection is availiable in the jamming_detection.py f
 GPS spoofing detection skelleton is availiable in the gps_spoofing_plausibility.py 
 
 ## Current Tasks
+- [ ] Set up REQUEST_DATA_STREAM or MAV_CMD_SET_MESSAGE_INTERVAL for message update
+- [ ] UWB measurements request and update implementation 
+- [ ] Time syncronisation of GPS and UWB
 
-- [ ] Script for the Jamming detection
-- [ ] Script for the GPS spoofing detection
-- [ ] Script for the plausibility check of sensor measurements
 
-to copy: 
+set up git:
 
 ```
 cd existing_repo

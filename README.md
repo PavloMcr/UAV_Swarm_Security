@@ -12,7 +12,7 @@ set up git:
 
 ```
 cd existing_repo
-git remote add origin https://git.informatik.tu-cottbus.de/UPWARDS/Security.git
+git remote add origin
 git branch -M main
 git push -uf origin main
 ```
